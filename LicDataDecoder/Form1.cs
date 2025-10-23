@@ -346,7 +346,14 @@ namespace LicDataDecoder
                     break;
                 default:
                     textBox2.Text += "Версия RING: " + RING;
-                    if (Int32.Parse(RING.Substring(5, 1)) < 5 & Int32.Parse(RING.Substring(2, 2)) < 12)
+                    
+                    // Парсим версию RING (формат: "0.11.10-2")
+                    string[] versionParts = RING.Split(new char[] { '.', '-' });
+                    int minorVersion = Int32.Parse(versionParts[1]); // второй компонент (11)
+                    int patchVersion = Int32.Parse(versionParts[2]); // третий компонент (10)
+                    
+                    // Проверяем, что версия >= 0.11.5
+                    if (minorVersion < 11 || (minorVersion == 11 && patchVersion < 5))
                     {
                         textBox2.Text += Environment.NewLine + "Для работы необходима версия RING не ниже 0.11.5-3. Утилита поставляется в комплекте с дистрибутивом технологической платформы 8.3.14.1565 в папке \"license-tools\". Удалите старые версии Ring и License и запустите файл 1ce-installer.cmd с правами администратора для установки.";
                         READY &= false;

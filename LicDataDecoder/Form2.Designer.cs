@@ -92,7 +92,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(329, 30);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Версия 1.6©2022 Влад Москалёв";
+            this.label5.Text = "Версия 1.6.1©2022 Влад Москалёв";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // pictureBox1
